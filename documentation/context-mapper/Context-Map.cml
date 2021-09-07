@@ -1,0 +1,19 @@
+ContextMap GymSystem {
+    type = SYSTEM_LANDSCAPE
+    state = TO_BE
+
+    contains UserContext
+    contains KeyCardContext
+    contains TrainingContext
+    contains AttendanceContext
+
+    UserContext [U]->[D] KeyCardContext
+    UserContext [U]->[D] TrainingContext
+    UserContext [U]->[D] AttendanceContext
+    TrainingContext [U]->[D] AttendanceContext
+}
+
+BoundedContext UserContext { }
+BoundedContext KeyCardContext { }
+BoundedContext TrainingContext { }
+BoundedContext AttendanceContext { }
