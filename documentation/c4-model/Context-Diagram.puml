@@ -1,0 +1,16 @@
+@startuml
+!include lib/C4_Context.puml
+
+Person(manager, "Manager", "A manager of the gym.")
+Person(trainer, "Trainer", "A trainer at the gym owning a key card.")
+Person(trainee, "Trainee", "A registered trainee of the gym with training slots he is signed in to.")
+
+System(gymManagement, "GymManagementSystem", "Provides the full workflow of the gym management including handling of users, keycards, trainings, and attendance.")
+
+Rel_D(manager, gymManagement, "Manage users, key cards and training slots.")
+Rel_R(trainer, gymManagement, "Manage provided training slots.")
+Rel_L(trainee, gymManagement, "View and sign in to training slots")
+
+SHOW_LEGEND()
+
+@enduml

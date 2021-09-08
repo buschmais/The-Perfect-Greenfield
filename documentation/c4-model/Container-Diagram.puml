@@ -1,0 +1,24 @@
+@startuml
+!include lib/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+System_Boundary(gymManagement, "GymManagementSystem") {
+    Container(spa, "SPA", "React, JavaScript", "UI to facilitate the management of users, keycards, trainings, and attendance.")
+    Container(backend, "Server Application", "Java, Spring Boot", "Provides functionality to manage users, keycards, trainings, and attendance.")
+    ContainerDb(db, "DB", "PostgreSQL", "Store data related to the user, trainings, keycards, and attendance.")
+
+    Rel_D(spa, backend, "Uses", "https")
+    Rel_D(backend, db, "Reads/Writes", "JDBC")
+}
+
+Person(manager, "Manager", "A manager of the gym.")
+Rel(manager, gymManagement, "Manage users, key cards and training slots.")
+
+Person(trainer, "Trainer", "A trainer at the gym owning a key card.")
+Rel(trainer, gymManagement, "Manage provided training slots.")
+
+Person(trainee, "Trainee", "A registered trainee of the gym with training slots he is signed in to.")
+Rel(trainee, gymManagement, "View and sign in to training slots")
+
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+!include lib/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+Container(spa, "SPA", "React, JavaScript", "UI to facilitate the management of users, keycards, trainings, and attendance.")
+
+Container_Boundary(backend, "Backend") {
+    Component(attendance, "Attendance Component", "Java, Spring Boot", "Allows users to (un-)register for training slots and sends notifications whenever there are updates to a training slot.")
+    Component(keycard, "Keycard Component", "Java, Spring Boot", "Allows managers to (un-)assign keycards to trainers.")
+    Component(training, "Training Component", "Java, Spring Boot", "Allows trainers to manage their provided training slots and trainees to view them.")
+    ComponentQueue(trainingChangedTopic, "Training Changed Topic", "Spring Application Events", "Events about created, updated, and deleted training slots.")
+    Component(user, "User Component", "Java, Spring Boot", "Allows users to manage their own details and managers to manage all accounts.")
+
+    Rel(training, trainingChangedTopic, "Publish")
+    Rel_R(trainingChangedTopic, attendance, "Subscribe") 
+    Rel_R(training, user, "Uses", "", "Basic information about users.")
+    Rel_L(keycard, user, "Uses", "", "Basic information about users.")
+
+}
+
+ContainerDb(db, "DB", "PostgreSQL", "Store data related to the user, trainings, keycards, and attendance.")
+
+Rel_D(spa, backend, "Uses", "https")
+Rel_D(backend, db, "Reads/Writes", "JDBC")
+@enduml
