@@ -3,107 +3,95 @@
 
 == Building Block View
 
+The building block view in this documentation is based on Simon Browns C4-Model and covers the views on:
 
+* Context-level
+* Container-level
+* Component-level
 
-=== Whitebox Overall System
+Not covered is the code-level
 
+=== Level 1 - Context Diagram
 
+[plantuml]
+.Business Context of the Gym Management System
+----
+!include ../c4-model/Context-Diagram.puml
+----
 
-_**<Overview Diagram>**_
 
 Motivation::
-
-_<text explanation>_
-
+* The system is a standalone system which does not require any external systems
 
 Contained Building Blocks::
-_<Description of contained building block (black boxes)>_
+* Gym Management System
 
-Important Interfaces::
-_<Description of important interfaces>_
+=== Level 2 - Container Diagram
 
+==== White Box <Gym Management System>
 
+[plantuml]
+.Container Diagram of the Gym Management System
+----
+!include ../c4-model/Container-Diagram.puml
+----
 
+Motivation::
+* a deployment monolith was chosen instead of microservices because of:
+** low load on the system due to limited number of users
+** reduced development complexity
+** reduced deployment complexity
 
-==== <Name black box 1>
+Contained Blackboxes::
 
+.Containers of the Gym Management System.
+|===
+|Name |Description
 
+|SPA
+|The client application implemented as a SPA.
 
-_<Purpose/Responsibility>_
+|Server Application
+|The server application, implemented as a deployment monolith.
 
-_<Interface(s)>_
+|DB
+|The database.
+|===
 
-_<(Optional) Quality/Performance Characteristics>_
+=== Level 3 - Component Diagram
 
-_<(Optional) Directory/File Location>_
+==== White Box <Server Application>
 
-_<(Optional) Fulfilled Requirements>_
+[plantuml]
+.Component Diagram of the Server Application of the Gym Management System
+----
+!include ../c4-model/Component-Diagram.puml
+----
 
-_<(optional) Open Issues/Problems/Risks>_
+Motivation::
+* a functional split was chosen because of:
+** quality goals focused on maintainability and modularity
+** clear separation of functional domains
+** easier navigation inside the application and therewith easier onboarding
 
+Contained Blackboxes::
 
+.Components of the Server Application of the Gym Management System.
+|===
+|Name |Description
 
+|Training Component
+|Logic regarding the management (create, update, delete) of training times.
 
-==== <Name black box 2>
+|User Component
+|Logic regarding the management (create, update, delete) of users.
 
-_<black box template>_
+|Keycard Component
+|Logic regarding the managament (create, update, delete) of users.
 
-==== <Name black box n>
+|Training Changed Topic
+|Topic for all changes on training times.
 
-_<black box template>_
-
-
-==== <Name interface 1>
-
-...
-
-==== <Name interface m>
-
-
-
-=== Level 2
-
-
-
-==== White Box _<building block 1>_
-
-
-
-_<white box template>_
-
-==== White Box _<building block 2>_
-
-
-_<white box template>_
-
-...
-
-==== White Box _<building block m>_
-
-
-_<white box template>_
-
-
-
-=== Level 3
-
-
-
-
-==== White Box <_building block x.1_>
-
-
-
-
-_<white box template>_
-
-
-==== White Box <_building block x.2_>
-
-_<white box template>_
-
-
-
-==== White Box <_building block y.1_>
-
-_<white box template>_
+|Attendance Component
+|Logic regarding registration for training times and attendance management.
+|===

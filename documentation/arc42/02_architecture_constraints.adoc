@@ -1,5 +1,10 @@
 [[section-architecture-constraints]]
 == Architecture Constraints
 
+The Gym Management System:
 
+* shall be implemented using Java and Spring Boot
+* shall be using Maven for build- and dependency management
+* shall be run via Docker Compose
+* shall be using only open-source tools and libraries
 

@@ -1,22 +1,51 @@
 [[section-concepts]]
 == Cross-cutting Concepts
 
+=== Domain Model
 
+This is an overview of the domain model from a pure functional point of view.
+From a technical view, this is not complete. It's only purpose is to give a quick overview of the domain model and the domain language.
 
+[plantuml]
+.Functional Domain Model of the Gym Management System
+----
+hide empty members
 
+class User {
+  firstName
+  lastName
+  email
+}
+enum Role {
+  MANAGER
+  TRAINER
+  TRAINEE
+}
+User --> "1" Role
 
-=== _<Concept 1>_
+class TrainingTime {
+  from
+  to
+}
 
-_<explanation>_
+class Attendance {}
+enum RegistrationState {
+  CONFIRMED
+  NOT_CONFIRMED
+}
+Attendance --> "1" RegistrationState
 
+class Keycard {
+  id
+}
+enum KeycardAssignmentState {
+  ASSIGNED
+  UNASSIGNED
+}
+Keycard --> "1" KeycardAssignmentState
 
-
-=== _<Concept 2>_
-
-_<explanation>_
-
-...
-
-=== _<Concept n>_
-
-_<explanation>_
+User "0..1" --> "0..1" Keycard : <<has>>
+User *--> "*" TrainingTime : <<provides>>
+User *--> "*" Attendance : <<attends>>
+TrainingTime *--> "*" Attendance : <<attended by>>
+----

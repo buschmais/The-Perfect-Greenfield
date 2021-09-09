@@ -5,15 +5,59 @@
 
 === Requirements Overview
 
+1. The system shall be accessible for 3 different user groups, i.e. Manager, Trainer, and Trainee.
+2. Managers shall be able to manage users (register, edit, unregister).
+3. Managers shall be able to manage keycards (create, assign, unassign, delete).
+4. Trainers shall be able to manage their provided training times (create, edit, delete).
+5. Trainees shall be able to view training times.
+6. Trainees shall be able to (un-)register for available training times.
+7. Trainess shall be notified upon a changed training time they're registered to.
 
+==== Domain Story - Update Training Time
+
+image::domain-stories/Update Training Time_2021-09-09.PNG[]
 
 === Quality Goals
 
+.Quality Goals of the Gym Management System.
+|===
+|Priority |Risk |Quality Goal
+
+|Functionality - Completeness
+|5
+|5
+
+|Functionality - Correctness
+|4
+|4
+
+|Security - Integrity
+|5
+|3
+
+|Reliability - Availability
+|3
+|3
+
+|Usability - Operability
+|5
+|2
+
+|Maintainability - Modularity
+|4
+|5
+
+|Maintainability - Modifiability
+|4
+|5
+
+|Maintainability - Testability
+|4
+|5
+|===
 
 
 === Stakeholders
-
-
 
 [options="header",cols="1,2,2"]
 |===

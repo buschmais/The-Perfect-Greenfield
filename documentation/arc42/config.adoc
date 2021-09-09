@@ -6,4 +6,4 @@
 :toc:
 
 // where are images located?
-:imagesdir: ./images
+:imagesdir: ./..

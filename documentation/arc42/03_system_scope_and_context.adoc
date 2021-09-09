@@ -1,24 +1,28 @@
 [[section-system-scope-and-context]]
 == System Scope and Context
 
-
-
-
-
 === Business Context
 
+[plantuml]
+.Business Context of the Gym Management System
+----
+!include ../c4-model/Context-Diagram.puml
+----
 
+.External systems and users of the Gym Management System.
+|===
+|Neighbor |Description
 
-**<Diagram or Table>**
+|Manager
+|Manages users, keycards, and training times of the gym.
 
-**<optionally: Explanation of external domain interfaces>**
+|Trainer
+|Manages provided training times.
 
-=== Technical Context
+|Trainee
+|Views and registers for training times.
+|===
 
+==== Subdomains in the Gym Management System
 
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of technical interfaces>**
-
-**<Mapping Input/Output to Channels>**
+image::context-mapper/Context-Map_ContextMap.png[]
