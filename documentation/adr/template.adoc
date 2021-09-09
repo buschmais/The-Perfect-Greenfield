@@ -1,0 +1,20 @@
+= <Number> - ADR Title
+
+NOTE:: This is a template for Architecture Decision Records as described by Michael Nygard (http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions)
+
+== Status
+
+One of: Proposed, Declined, Accepted, Superseded
+
+== Context
+
+Shortly describe the reason and motivation for this decision, e.g. a specific issue, and in which context this decision is applicable, e.g. a specific part of the application.
+
+== Decision
+
+Describe in an active language the decision taken to let future readers know what they have to respect during implementation.
+
+== Consequences
+
+Describe potential or existing issues with the decision, e.g. already existing violations.
+Also, note what actions need to be taken to follow the decision.

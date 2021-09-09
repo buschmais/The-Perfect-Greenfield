@@ -1,5 +1,6 @@
 [[section-design-decisions]]
 == Design Decisions
 
+include::../adr/adr-overview.adoc[leveloffset=+2]
 
 

@@ -1,0 +1,43 @@
+= Architecture Decision Records
+
+== Introduction
+
+[quote, 'https://github.com/joelparkerhenderson/architecture_decision_record[Joel Parker Henderson]']
+An architectural decision record (ADR) is a document that captures an important architectural decision made along with its context and consequences.
+An architectural decision (AD) is a software design choice that addresses a significant requirement.
+
+== Working with ADRs
+
+=== Template
+
+The file `template.adoc` contains a template for ADRs:
+
+.ADR Template
+....
+include::template.adoc[]
+....
+
+=== Creating an ADR
+
+If you want to propose a new architecture decision, follow the following process (in a separate branch):
+
+1. Copy the ADR template to a new document named <XXX>-<Title>.adoc
+2. Fill all sections of the ADR
+3. Present the ADR to a selection of the team and have it discussed
+4. Update the ADR based on the discussions and create a PR
+5. Have the PR reviewed and merged (Note: the state needs to be changed to Accepted)
+
+=== Updating an ADR
+
+If there need to be changes to an existing ADR, following actions are possible depending on the change:
+
+1. Updating an existing document
+** Existing ADRs may be updated for minor changes that do not affect the decision itself, e.g.
+*** Correcting spelling errors
+*** Updating rules that validate the decision because of source code changes
+** In that case, update the ADR in a separate branch, create a PR, have it checked and merged
+2. Superseding an existing document
+** In case a decision is not valid anymore for the project, the document needs to be marked as superseded
+*** If there is a successor for this decision, follow the process for creating a new ADR and link the superseded one
+*** If there are rues validating this decision, disable them by updating the ADR
+** If everything is accomplished, get the changes reviewed in a PR and have it merged
