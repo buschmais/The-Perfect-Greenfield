@@ -1,0 +1,23 @@
+= 003 - Implement Bounded Contexts using jMolecules on Package-level
+
+== Status: Accepted
+
+== Context
+
+The structure of the Gym Management System is heavily based on the functional decomposition.
+
+Following the functional decomposition is required to keep maintenance and extension efforts low,
+have clarity about the location of the implementation, and, in case the application grows, allow for easier split of development teams.
+
+== Decision
+
+Bounded Contexts need to be implemented as Java-packages inside the main-package `com.buschmais.gymmanagement`.
+
+Each of these packages needs to be annotated with `o.j.d.a.BoundedContext` via a `package-info.java`.
+The annotation must specify the name of the bounded context completely, e.g. "UserContext".
+
+== Consequences
+
+Implementation of features requires to follow the dependency directions as documented in section 3 of the ADR.
+
+include::jQA:Summary[importedConstraints="adr:IllegalDependenciesBetweenBoundedContext"]

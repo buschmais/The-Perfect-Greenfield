@@ -1,0 +1,26 @@
+<jqassistant-rules
+        xmlns="http://schema.jqassistant.org/rule/v1.8"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://schema.jqassistant.org/rule/v1.8 https://schema.jqassistant.org/rule/jqassistant-rule-v1.8.xsd">
+    <group id="adr:003-Implementing-Bounded-Context">
+        <includeConstraint refId="adr:IllegalDependenciesBetweenBoundedContext"/>
+    </group>
+
+    <constraint id="adr:IllegalDependenciesBetweenBoundedContext">
+        <requiresConcept refId="jmolecules-ddd:BoundedContextPackage"/>
+        <description>Labels all gym management artifacts and files with :GymManagement</description>
+        <cypher><![CDATA[
+            MATCH
+                (bC1:JMolecules:BoundedContext),
+                (bC2:JMolecules:BoundedContext),
+                (bC1)-[:DEPENDS_ON]->(bC2),
+                (c:ContextMapper:ContextMap{state: 'TO_BE'})
+            WHERE
+                bC1 <> bC2 AND
+                NOT (c)-[:SHOWS]->(:ContextMapper:BoundedContext{name: bC1.name})-[:DEFINES_DEPENDENCY]->(:ContextMapper:BoundedContext{name: bC2.name})<-[:SHOWS]-(c)
+            RETURN
+                bC1 AS Source, bC2 AS Target
+        ]]></cypher>
+    </constraint>
+
+</jqassistant-rules>

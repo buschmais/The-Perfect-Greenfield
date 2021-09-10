@@ -44,3 +44,4 @@ If there need to be changes to an existing ADR, following actions are possible d
 
 include::001-jMolecules-for-Architecture-Explicit-Source-Code.adoc[leveloffset=+1]
 include::002-Architecture-Validation-using-jQAssistant.adoc[leveloffset=+1]
+include::003-Implementing-Bounded-Contexts.adoc[leveloffset=+1]
