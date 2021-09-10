@@ -1,5 +1,9 @@
 [[section-technical-risks]]
 == Risks and Technical Debts
 
+include::jQA:Summary[constraints="*",importedConstraints="*"]
+
+include::jQA:Rules[constraints="*"]
+
 
 

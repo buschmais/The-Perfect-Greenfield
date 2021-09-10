@@ -2,8 +2,10 @@
 // including all help texts
 //
 // ====================================
+// embed images into the html
+:data-uri:
 
-= image:arc42-logo.png[arc42] Template
+= image:arc42-logo.png[arc42] Gym Management System
 // toc-title definition MUST follow document title without blank line!
 :toc-title: Table of Contents
 

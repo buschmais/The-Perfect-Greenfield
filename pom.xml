@@ -30,6 +30,9 @@
         <bytebuddy.version>1.11.15</bytebuddy.version>
         <jmolecules.version>1.3.0</jmolecules.version>
         <jmolecules-integrations.version>0.5.0</jmolecules-integrations.version>
+        <jqassistant.version>1.10.1</jqassistant.version>
+        <jqassistant-context-mapper.version>1.0.0</jqassistant-context-mapper.version>
+        <jqassistant-jmolecules.version>1.2.0</jqassistant-jmolecules.version>
     </properties>
 
     <dependencies>
@@ -63,6 +66,57 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.buschmais.jqassistant</groupId>
+                <artifactId>jqassistant-maven-plugin</artifactId>
+                <version>${jqassistant.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <goals>
+                            <goal>scan</goal>
+                            <goal>analyze</goal>
+                        </goals>
+                        <configuration>
+                            <groups>
+                                <group>jmolecules-ddd:Default</group>
+                                <group>jmolecules-event:Default</group>
+                                <group>spring-boot:Default</group>
+                                <group>gym-management:Default</group>
+                            </groups>
+                            <scanIncludes>
+                                <scanInclude>
+                                    <path>${project.basedir}/documentation/context-mapper</path>
+                                </scanInclude>
+                            </scanIncludes>
+                            <reportProperties>
+                                <asciidoc.report.rule.directory>${project.basedir}/documentation/arc42</asciidoc.report.rule.directory>
+                                <asciidoc.report.file.include>index.adoc</asciidoc.report.file.include>
+                            </reportProperties>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <store>
+                        <embedded>
+                            <!-- config needed for Gitpod -->
+                            <listenAddress>0.0.0.0</listenAddress>
+                        </embedded>
+                    </store>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jqassistant.contrib.plugin</groupId>
+                        <artifactId>jqassistant-context-mapper-plugin</artifactId>
+                        <version>${jqassistant-context-mapper.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jqassistant.contrib.plugin</groupId>
+                        <artifactId>jqassistant-jmolecules-plugin</artifactId>
+                        <version>${jqassistant-jmolecules.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <groupId>net.bytebuddy</groupId>
                 <artifactId>byte-buddy-maven-plugin</artifactId>
