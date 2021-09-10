@@ -1,0 +1,43 @@
+= 001 - Use jMolecules for Architecture Explicit Source Code
+
+== Status: Accepted
+
+== Context
+
+Architectural concepts such as components, services, or aggregates are often hidden by the implementation instead of being made explicit.
+
+The explicit visibility of architectural concepts is an important precondition in order to have a system that can be:
+
+* easily understood and navigated by developers
+* easily extended by providing a blueprint of how architectural concepts should be implemented
+* validated against the designed architecture and its inherent constraints
+
+== Decision
+
+The implementation of the Gym Management System is based on the paradigms of Domain-driven Design.
+
+Concepts will be made explicit using jMolecules, a library providing annotations and marker interfaces to identify concepts coming from:
+
+* Domain-driven Design, e.g. Bounded Context, Service, Repository, Aggregate, Entity
+* Layered Architectures, e.g. Interfaces, Application, Domain, infrastructure
+* Event-driven Systems, e.g. Event, Event handler, Event Publisher
+
+The jMolecules Byte Buddy integration will be used to translate the jMolecules patterns for use with the Spring Framework.
+
+== Consequences
+
+For the Spring Framework integration use the jMolecules annotations instead of the Spring ones:
+
+* Annotation `o.j.d.a.Repository` translates to `o.s.s.Repository`
+* Annotation `o.j.d.a.Service` translates to `o.s.s.Service`
+* Annotation `o.j.d.a.Factory` translates to `o.s.s.Component`
+* Annotation `o.j.e.a.DomainEventHandler` translates to `o.s.c.e.EventListener`
+* Interface `o.j.d.t.Repository` translates to `o.s.d.r.Repository`
+
+For the JPA integration use the jMolecules annotations and interfaces instead of the JPA annotations:
+
+* `AggregateRoot` types translate to JPAs `@Entity`, Spring Data's `Persistable` and get a default constructor
+* `Entity` types translate to JPAs `@Entity` and get a default constructor
+* `Entity` fields translate to `@OneToOne` or `@OneToMany` (for collections) with cascade all
+* `Identifier` fields translate to `@EmbeddedId`
+* `Identifier` types translate to `@Embeddable`

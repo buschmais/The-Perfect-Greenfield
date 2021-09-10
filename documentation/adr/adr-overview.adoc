@@ -41,3 +41,5 @@ If there need to be changes to an existing ADR, following actions are possible d
 *** If there is a successor for this decision, follow the process for creating a new ADR and link the superseded one
 *** If there are rues validating this decision, disable them by updating the ADR
 ** If everything is accomplished, get the changes reviewed in a PR and have it merged
+
+include::001-jMolecules-for-Architecture-Explicit-Source-Code.adoc[leveloffset=+1]
