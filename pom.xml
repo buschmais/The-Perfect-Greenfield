@@ -26,11 +26,63 @@
         </developer>
     </developers>
 
+    <properties>
+        <bytebuddy.version>1.11.15</bytebuddy.version>
+        <jmolecules.version>1.3.0</jmolecules.version>
+        <jmolecules-integrations.version>0.5.0</jmolecules-integrations.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
+        <!-- jMolecules -->
+        <dependency>
+            <groupId>org.jmolecules</groupId>
+            <artifactId>jmolecules-ddd</artifactId>
+            <version>${jmolecules.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jmolecules</groupId>
+            <artifactId>jmolecules-events</artifactId>
+            <version>${jmolecules.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jmolecules.integrations</groupId>
+            <artifactId>jmolecules-jpa</artifactId>
+            <version>${jmolecules-integrations.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jmolecules.integrations</groupId>
+            <artifactId>jmolecules-spring</artifactId>
+            <version>${jmolecules-integrations.version}</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.bytebuddy</groupId>
+                <artifactId>byte-buddy-maven-plugin</artifactId>
+                <version>${bytebuddy.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>transform</goal> <!-- Enable the source code transformation -->
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency> <!-- Apply jMolecules transformations -->
+                        <groupId>org.jmolecules.integrations</groupId>
+                        <artifactId>jmolecules-bytebuddy</artifactId>
+                        <version>${jmolecules-integrations.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
