@@ -1,0 +1,44 @@
+= 002 - Use jQAssistant to validate the correct implementation of the Architecture
+
+== Status: Accepted
+
+== Context
+
+The implementation of a designed architecture often starts to deviate from the plan, making it more difficult to extend, maintain, and understand the software system.
+
+To reduce the risk of deviation, governance needs to be in place to:
+
+* check the conformance of the implementation with the design
+* check the conformance to accepted best practices when using frameworks
+* give fast feedback on newly introduced violations
+
+== Decision
+
+The open-source tool jQAssistant will be used to validate the architecture as documented in Arc42 and newly introduced architecture decisions.
+
+For this, jQAssistant concepts and constraints will be written for e.g.:
+
+* validating the correct implementation of the functional decomposition
+* validating the correct implementation of the technical layering
+* conformance to best practices when using the Spring Framework
+* newly introduced architecture decisions
+
+To make the implementation more easy, jQAssistant integrations will be used for:
+
+* Spring Framework
+* jMolecules
+* Context Mapper
+
+To keep the AsciiDoc-files clean from jQA reporting, constraints must only be implemented in the `${project.basedir}\jqassistant` folder.
+Thus, violations will be visible in section 11 of this Arc42 document.
+
+Concepts for graphical reporting may be used inside AsciiDoc in order to get generated diagrams embedded.
+
+== Consequences
+
+* New constraints need to be put in a file inside `${project.basedir}`
+** defined groups need to be added to the file `${project.basedir}\gym-management-default.xml`
+* New constraints because of new ADRs need to be implemented in a file called `${project.basedir}\jqassistant\adr\<name of the adr>.xml`
+** they must define a rule group named `adr:<name of the adr>`
+** the group needs to be added to the file `${project.basedir}\gym-management-default.xml`
+* Before introducing changes to the main-branch, it must be checked that there no constraint violations.

@@ -43,3 +43,4 @@ If there need to be changes to an existing ADR, following actions are possible d
 ** If everything is accomplished, get the changes reviewed in a PR and have it merged
 
 include::001-jMolecules-for-Architecture-Explicit-Source-Code.adoc[leveloffset=+1]
+include::002-Architecture-Validation-using-jQAssistant.adoc[leveloffset=+1]
