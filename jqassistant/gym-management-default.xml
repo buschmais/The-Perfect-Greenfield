@@ -3,6 +3,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://schema.jqassistant.org/rule/v1.8 https://schema.jqassistant.org/rule/jqassistant-rule-v1.8.xsd">
     <group id="gym-management:Default">
+        <includeConcept refId="arc42:EventFlow"/>
         <includeGroup refId="preparation:Default"/>
         <includeGroup refId="adr:003-Implementing-Bounded-Context"/>
     </group>

@@ -1,4 +1,4 @@
 [[section-runtime-view]]
 == Runtime View
 
-NOTE: Left out for the moment due to low runtime complexity.
+include::jQA:Rules[concepts="arc42:EventFlow"]

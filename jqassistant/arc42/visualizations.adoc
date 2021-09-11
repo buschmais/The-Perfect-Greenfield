@@ -1,0 +1,8 @@
+[[arc42:EventFlow]]
+[source,cypher,role=concept,requiresConcepts="jmolecules-event:*",reportType="plantuml-sequence-diagram"]
+.Visualization of the `TrainingUpdateEvent` flow
+----
+MATCH sequence=(t:Type{name: "TrainingService"})-[:DECLARES]->(:DomainEventPublisher)-[:PUBLISHES]-()<-[:HANDLES]-(:DomainEventHandler)<-[:DECLARES]-()
+RETURN nodes(sequence) AS participants,
+       relationships(sequence) AS messages
+----
