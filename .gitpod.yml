@@ -1,0 +1,17 @@
+image:
+  file: .gitpod.Dockerfile
+ports:
+  - port: 7474
+    onOpen: open-browser
+  - port: 7687
+tasks:
+  - before: yes | sdk install java 11.0.11.hs-adpt
+    init: mvn clean verify -DskipTests
+vscode:
+  extensions:
+    - asciidoctor.asciidoctor-vscode
+    - jebbs.plantuml
+    - redhat.java
+    - ms-azuretools.vscode-docker
+    - contextmapper.context-mapper-vscode-extension
+    - ms-vscode.live-server
