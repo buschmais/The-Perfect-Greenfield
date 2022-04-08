@@ -1,0 +1,19 @@
+version: '3'
+services:
+  neo4j:
+    image: neo4j:3.5.24
+    ports:
+      - 7474:7474
+      - 7687:7687
+    environment:
+      - NEO4J_AUTH=none
+    volumes:
+      - ./target/jqassistant/store:/data/databases/graph.db
+  jupyter:
+    image: jqassistant/jupyter-notebook:1.11.0
+    ports:
+      - 8888:8888
+    environment:
+      - NEO4J_URL=http://neo4j:7474
+    volumes:
+      - ./jupyter:/home/jovyan/work

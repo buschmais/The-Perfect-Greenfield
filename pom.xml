@@ -33,6 +33,7 @@
         <jqassistant.version>1.10.1</jqassistant.version>
         <jqassistant-context-mapper.version>1.0.0</jqassistant-context-mapper.version>
         <jqassistant-jmolecules.version>1.2.0</jqassistant-jmolecules.version>
+        <jqassistant-git.version>1.8.0</jqassistant-git.version>
     </properties>
 
     <dependencies>
@@ -117,6 +118,9 @@
                                 <scanInclude>
                                     <path>${project.basedir}/documentation/context-mapper</path>
                                 </scanInclude>
+                                <scanInclude>
+                                    <path>${project.basedir}/.git</path>
+                                </scanInclude>
                             </scanIncludes>
                             <reportProperties>
                                 <asciidoc.report.rule.directory>${project.basedir}/documentation/arc42</asciidoc.report.rule.directory>
@@ -143,6 +147,11 @@
                         <groupId>org.jqassistant.contrib.plugin</groupId>
                         <artifactId>jqassistant-jmolecules-plugin</artifactId>
                         <version>${jqassistant-jmolecules.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>de.kontext-e.jqassistant.plugin</groupId>
+                        <artifactId>jqassistant.plugin.git</artifactId>
+                        <version>${jqassistant-git.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
